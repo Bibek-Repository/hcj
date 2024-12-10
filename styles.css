@@ -1,0 +1,215 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #fbae72, #9b42a6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container */
+.container {
+    display: flex;  /* Use flexbox for horizontal layout */
+    justify-content: space-between;  /* Space between the card area and timer panel */
+    align-items: center;  /* Vertically center the content */
+    width: 100%;  /* Full width of the screen */
+    height: 100vh;  /* Full viewport height */
+    padding: 20px;  /* Add padding for spacing */
+    box-sizing: border-box;
+}
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    height: 300px; /* Fixed height for the rolling area */
+}
+
+/* Draggable Card */
+.draggable-card {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    background: #9e6568;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    transition: transform 0.3s, z-index 0.3s, opacity 0.3s;
+    font-size: 20px;
+    color: white;
+}
+
+/* Card Content Design */
+.top-rectangular {
+    width: 100%;
+    height: 50px;
+    background-color: #ee9096; 
+    border-radius: 10px;
+}
+
+/* Card Content Design */
+.content {
+    display: flex;
+    align-items: center;  /* Align items vertically at the center */
+    gap: 15px;  /* Add space between the circle and the divs */
+    margin-top: 15px;
+    flex-direction: row;
+}
+
+/* Small Circle */
+.circle {
+    width: 30px;  /* Keep width same as before */
+    height: 30px;  /* Keep height same as before */
+    background-color: #ee9096; 
+    border-radius: 50%;  /* Make it a circle */
+}
+
+/* Content for horizontal divs (stacked vertically) */
+.horizontal-container {
+    display: flex;
+    flex-direction: column;  /* Stack the horizontal divs vertically */
+    align-items: flex-start; /* Align items to the left (or center if preferred) */
+    gap: 10px;  /* Space between the two horizontal divs */
+    background-color: #9e6568;
+    width: 200px; /* Set a fixed width for the container */
+}
+
+/* Long Horizontal Div */
+.horizontal.long {
+    width: 100%;  
+    height: 10px;  
+    background-color: #ee9096;  
+    border-radius: 5px;
+}
+
+/* Small Horizontal Div */
+.horizontal.small {
+    width: 50%;  
+    height: 5px;  /* Half the height of the long div */
+    background-color: #ee9096;  /* Yellow color */
+    border-radius: 5px;
+}
+
+/* Card Visibility Classes (used for rolling cards) */
+.draggable-card {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(0) scale(0.8);
+    z-index: 0;
+}
+
+/* Center card (fully visible) */
+.draggable-card.visible-center {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    z-index: 3;
+}
+
+/* Top card (partially visible) */
+.draggable-card.visible-top {
+    opacity: 0.5;
+    pointer-events: none;
+    transform: translateY(-50px) scale(0.9);
+    z-index: 2;
+}
+
+/* Bottom card (partially visible) */
+.draggable-card.visible-bottom {
+    opacity: 0.5;
+    pointer-events: none;
+    transform: translateY(50px) scale(0.9);
+    z-index: 1;
+}
+
+/* Timer Panel (right side) */
+.timer-panel {
+    width: auto;  /* Set a fixed width for the timer panel */
+    background-color: black;  /* Light background color */
+    padding: 20px;  /* Add padding around the timer */
+    border-radius: 10px;  /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  /* Add a subtle shadow */
+    display: flex;
+    flex-direction: column;  /* Stack the icon and timer vertically */
+    align-items: center;  /* Center both icon and timer */
+    justify-content: flex-start;  /* Align the items to the start */
+    text-align: center;   
+}
+
+/* Timer (Example Timer Text) */
+.timer {
+    font-size: 24px;
+    
+    font-weight: bold;
+    color: white;  /* Green color for the timer text */
+    margin-top: 10px;  /* Add spacing between the icon and the timer */
+}
+
+/* Blinking Icon Above Timer */
+.timer-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #e74c3c;  /* Red color for the icon */
+    color: white;
+    border-radius: 50%;
+    margin-bottom: 10px;  /* Space between icon and timer */
+    animation: blink 1s infinite;  /* Blinking effect */
+}
+
+/* Blinking Animation */
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* List of Icons in the Timer Panel */
+.icon-list {
+    list-style-type: none;  /* Remove default list styling */
+    padding: 0;
+    margin-top: 20px;  /* Add space between timer and the list */
+    display: flex;
+    flex-direction: column;  /* Align the icons vertically */
+    align-items: center;  /* Center the icons horizontally */
+    color: white;
+}
+
+.icon-list li {
+    font-size: 24px;  /* Size of the icons */
+    margin: 10px 0;  /* Space between icons */
+    cursor: pointer;  /* Change cursor to indicate clickable item */
+    transition: color 0.3s;  /* Smooth transition for hover effect */
+    display: flex;
+    align-items: center;  /* Align text and icon vertically */
+    justify-content: center;  /* Center the icon and text horizontally */
+}
+
+/* Hover Effect for Icons */
+.icon-list li:hover {
+    color: #3498db;  /* Change icon color on hover */
+}
+
+.icon-list i {
+    margin-right: 10px;  /* Add space between icon and text */
+}
+.dashed-line {
+            width: 80%;
+            border-top: 2px dashed #ccc;
+            margin: 20px 0;
+        }
+
+          
